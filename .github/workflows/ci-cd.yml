@@ -1,7 +1,7 @@
 build:
     runs-on: ubuntu-latest
     needs: build-and-test
-    if: github.ref == 'refs/heads/master'  # Solo ejecuta este job en la rama master
+    if: github.ref == 'refs/heads/main'  # Solo ejecuta este job en la rama master
     steps:
       # 1. Checkout del código
       - name: Checkout code
