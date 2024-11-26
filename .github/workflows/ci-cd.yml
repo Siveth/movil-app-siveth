@@ -1,4 +1,4 @@
-name: Despliegue
+name: Build and Deploy
 
 on:
   push:
@@ -26,7 +26,7 @@ jobs:
       - name: Build APK for Android
         run: npx eas build --platform android --profile preview --non-interactive
         env:
-          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}  # Asegúrate de configurar EXPO_TOKEN en GitHub Secrets.
+          EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
       # 5. Obtener URL del artefacto y subir imagen
       - name: Upload image and send data to API
@@ -63,7 +63,7 @@ jobs:
 
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
-          IMAGE_PATH: ".github/workflows/Logo.png"  # Cambia esto a la ruta de tu icono
+          IMAGE_PATH: ".github/workflows/Logo.png"
           WEB_SERVICE_URL: "https://labarbada.store/subirImagen.php"
-          API_URL: "https://api-admin-six.vercel.app/api/guardar-datos"  # Cambia por la URL de tu API
-          PROJECT_NAME: "SIVETH"  # Cambia este valor por el nombre de tu proyecto
+          API_URL: "https://api-admin-six.vercel.app/api/guardar-datos"
+          PROJECT_NAME: "SIVETH"
