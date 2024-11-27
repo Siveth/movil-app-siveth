@@ -24,7 +24,7 @@ jobs:
 
       # 4. Construcción para Android
       - name: Build APK for Android
-        run: npx eas build --platform android --profile preview --non-interactive
+        run: npx eas-cli build --platform android --profile preview --non-interactive
         env:
           EXPO_TOKEN: ${{ secrets.EXPO_TOKEN }}
 
