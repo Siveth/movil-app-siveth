@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { View, Text, Button, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
+import { View, Text, StyleSheet, ScrollView, TouchableOpacity } from 'react-native';
 import Modal from 'react-native-modal';
 import { Picker } from '@react-native-picker/picker';
 import { useRouter } from 'expo-router';
@@ -35,13 +35,13 @@ const Boletos = () => {
 
   const handleBuscarViajes = () => {
     const viajesEncontrados = [
-      { origen: 'Ciudad de México', destino: 'Guadalajara', fecha: '2024-04-01', hora: '8:00 AM', precio: '$100' },
-      { origen: 'Monterrey', destino: 'Guadalajara', fecha: '2024-04-01', hora: '8:00 AM', precio: '$120' },
+      { id: 1, origen: 'Ciudad de México', destino: 'Guadalajara', fecha: '2024-04-01', hora: '8:00 AM', precio: 100 },
+      { id: 2, origen: 'Monterrey', destino: 'Guadalajara', fecha: '2024-04-01', hora: '8:00 AM', precio: 120 },
     ];
     setViajes(viajesEncontrados);
     setModalIsOpen(true);
   };
-
+  
   const closeModal = () => {
     setModalIsOpen(false);
   };
@@ -51,10 +51,18 @@ const Boletos = () => {
     router.push({
       pathname: 'Screens/Asiento',
       params: {
-        viaje: JSON.stringify(viaje)
+        origen: viaje.origen,
+        destino: viaje.destino,
+        fecha: viaje.fecha,
+        hora: viaje.hora,
+        precio: viaje.precio,
+        fk_usuario: 'alher2803@gmail.com', // Asegúrate de obtener el usuario real
+        Cantidad_Boletos: 1, // Ejemplo de cantidad de boletos
+        fk_viajes: 1, // Asegúrate de que cada viaje tenga un ID único
       }
     });
   };
+  
 
   return (
     <ScrollView contentContainerStyle={styles.scrollContainer}>
@@ -107,7 +115,7 @@ const Boletos = () => {
                 <Text>Destino: {viaje.destino}</Text>
                 <Text>Fecha: {viaje.fecha}</Text>
                 <Text>Hora: {viaje.hora}</Text>
-                <Text>Precio: {viaje.precio}</Text>
+                <Text>Precio: ${viaje.precio}</Text>
                 <TouchableOpacity onPress={() => elegirViaje(viaje)} style={styles.elegirButton}>
                   <Text style={styles.elegirButtonText}>Agregar viaje</Text>
                 </TouchableOpacity>

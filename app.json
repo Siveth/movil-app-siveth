@@ -8,7 +8,7 @@
     "scheme": "myapp",
     "userInterfaceStyle": "automatic",
     "splash": {
-      "image": "./assets/images/Logo.png",
+      "image": "./assets/images/apple-touch-icon.png",
       "resizeMode": "contain",
       "backgroundColor": "#0D92F4"
     },

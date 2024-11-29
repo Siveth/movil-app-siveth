@@ -10,8 +10,7 @@ const asientos = Array(40).fill(null).map((_, index) => ({
 
 const SeleccionAsientoScreen = () => {
   const router = useRouter();
-  const { viaje } = useLocalSearchParams();
-  const viajeData = JSON.parse(viaje);
+  const { origen, destino, fecha, hora, precio, fk_usuario, Cantidad_Boletos, fk_viajes } = useLocalSearchParams();
   const [asientoSeleccionado, setAsientoSeleccionado] = useState(null);
   const [modalIsOpen, setModalIsOpen] = useState(false);
 
@@ -28,9 +27,17 @@ const SeleccionAsientoScreen = () => {
     setModalIsOpen(false);
     router.push({
       pathname: 'Screens/Confirmacion',
-      params: { 
-        ...viajeData,
-        asientoSeleccionado
+      params: {
+        origen,
+        destino,
+        fecha,
+        hora,
+        precio,
+        asientoSeleccionado,
+        fk_usuario,
+        Cantidad_Boletos,
+        fk_viajes,
+        Asiento: asientoSeleccionado,
       }
     });
   };
